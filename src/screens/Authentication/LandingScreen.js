@@ -56,7 +56,7 @@ export default function LandingScreen({navigation}) {
                         onPress={()=>navigation.navigate("Signup",{isRefernal: false,})}
                         >
                             <TextWhite style={{fontFamily:"Inter-Bold", fontSize:16 }} >
-                            Testing -- REGISTER -- Testing
+                            REGISTER
                             </TextWhite>
                     </GlobalButton>
 

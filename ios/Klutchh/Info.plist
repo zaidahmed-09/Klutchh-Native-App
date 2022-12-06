@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CodePushDeploymentKey</key>
+	<string>8AWrX4e5-SO9_fkQyo6A5cqF0_6BqIHf6Ga6u</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -37,6 +39,29 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fonts/MaterialCommunityIcons.ttf</string>
+		<string>fonts/Octicons.ttf</string>
+		<string>fonts/MaterialIcons.ttf</string>
+		<string>fonts/Ionicons.ttf</string>
+		<string>fonts/Zocial.ttf</string>
+		<string>fonts/SimpleLineIcons.ttf</string>
+		<string>fonts/Foundation.ttf</string>
+		<string>fonts/Fontisto.ttf</string>
+		<string>fonts/FontAwesome5_Solid.ttf</string>
+		<string>fonts/FontAwesome5_Regular.ttf</string>
+		<string>fonts/FontAwesome5_Brands.ttf</string>
+		<string>fonts/FontAwesome.ttf</string>
+		<string>fonts/Feather.ttf</string>
+		<string>fonts/EvilIcons.ttf</string>
+		<string>fonts/Entypo.ttf</string>
+		<string>fonts/AntDesign.ttf</string>
+		<string>fonts/Inter-Medium.ttf</string>
+		<string>fonts/Inter-SemiBold.ttf</string>
+		<string>fonts/Inter-Bold.ttf</string>
+		<string>fonts/Inter-Regular.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

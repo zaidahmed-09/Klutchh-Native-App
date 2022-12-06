@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Text, Image,ImageBackground,Dimensions  } from "react-native";
 import colors from "../constants/colors";
 import { correctName } from "../extras/utils";
