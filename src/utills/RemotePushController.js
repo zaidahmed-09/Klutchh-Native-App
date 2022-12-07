@@ -9,7 +9,7 @@ const RemotePushController  = () => {
     useEffect(() => {
         PushNotification.configure({
             onRegister: function(token) {
-                console.log("Token ", token);
+                //console.log("Token ", token);
             },
 
             onNotification: function(notification){

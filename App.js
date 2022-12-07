@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react'
-import { StyleSheet, Text, View, Platform, LogBox } from "react-native";
+import React, {useEffect, useRef} from 'react'
+import { StyleSheet, Text, View, Platform, LogBox, } from "react-native";
 
 import AppNavigation from './AppNavigation';
 import { Provider } from "react-redux";
@@ -20,6 +20,8 @@ LogBox.ignoreLogs([
     ])
     
 const App = () => {
+
+
 
     const queryClient = new QueryClient();
 
@@ -50,11 +52,11 @@ const App = () => {
             messaging()
                 .getToken()
                 .then((fcmToken) => {
-                console.log('FCM Token -> ', fcmToken);
+                //console.log('FCM Token -> ', fcmToken);
                 //AsyncStorage.setItem('fcmToken', fcmToken);
             });
         }else{
-            console.log("fcm already : " + fcmToken);
+            //console.log("fcm already : " + fcmToken);
         }
     }
     
