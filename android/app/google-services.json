@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "600947209366",
+    "project_id": "klutchh-reactnative",
+    "storage_bucket": "klutchh-reactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600947209366:android:34bc37865811eda1f63eb7",
+        "android_client_info": {
+          "package_name": "com.klutchh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600947209366-ccrl6f9mi0oe0n8n4it6jq81mkveposs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDION6Pj2huKHNoaFFTY-X60w-Fyp9crtI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600947209366-ccrl6f9mi0oe0n8n4it6jq81mkveposs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

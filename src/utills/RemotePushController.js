@@ -1,29 +1,29 @@
-// import React, {useEffect} from 'react'
-// import { Text, View } from 'react-native';
+import React, {useEffect} from 'react'
+import { Text, View } from 'react-native';
 
-// import PushNotification from "react-native-push-notification";
+import PushNotification from "react-native-push-notification";
 
 
-// const RemotePushController  = () => {
+const RemotePushController  = () => {
 
-//     useEffect(() => {
-//         PushNotification.configure({
-//             onRegister: function(token) {
-//                 console.log("Token ", token);
-//             },
+    useEffect(() => {
+        PushNotification.configure({
+            onRegister: function(token) {
+                console.log("Token ", token);
+            },
 
-//             onNotification: function(notification){
-//                 console.log("Remote controller ", notification);
-//             },
+            onNotification: function(notification){
+                console.log("Remote controller ", notification);
+            },
 
-//             senderID: '600947209366',
-//             popInitialNotification: true,
-//             requestPermissions: true,
-//         });
-//     }, [])
+            senderID: '600947209366',
+            popInitialNotification: true,
+            requestPermissions: true,
+        });
+    }, [])
     
-//     return null;
-// }
+    return null;
+}
 
-// export default RemotePushController
+export default RemotePushController
 

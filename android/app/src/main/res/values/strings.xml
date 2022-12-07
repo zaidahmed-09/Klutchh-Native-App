@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Klutchh</string>
+    <string name="default_notification_channel_id">channel-id-1</string>
     <string moduleConfig="true" name="CodePushDeploymentKey">fxCfGLRV4Y1mjNLd6hkehl_uyWKXNlu3U65Gn</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>

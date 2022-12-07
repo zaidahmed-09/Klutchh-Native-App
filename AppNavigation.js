@@ -18,6 +18,7 @@ import colors from './src/constants/colors';
 
 
 import SplashScreen from 'react-native-splash-screen';
+import RemotePushController from './src/utills/RemotePushController';
 // import FcmTokenScreen from './FcmTokenScreen';
 
 const AppNavigation = () => {
@@ -122,6 +123,8 @@ const AppNavigation = () => {
                 </View>
                 </TouchableOpacity>
             </Modal>
+
+            <RemotePushController />
         </NavigationContainer>
     )
 }
