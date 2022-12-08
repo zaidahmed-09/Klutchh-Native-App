@@ -103,7 +103,7 @@ const TournamentsScreen = ({ navigation }) => {
       });
     });
 
-    console.log("all_tournaments ", all_tournaments);
+    //console.log("all_tournaments ", all_tournaments);
 
     setTournamentsMatches(all_tournaments);
 
@@ -151,8 +151,8 @@ const TournamentsScreen = ({ navigation }) => {
       >
 
         <View style={{ width: '100%', marginTop: 30, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} >
-          {gamesArray.map((item) => (
-              <View>
+          {gamesArray.map((item, index) => (
+              <View key={index} >
                   <View style={{flex: 1, alignItems: 'center'}} >
                     <TouchableOpacity 
                       onPress={() => {setActiveTab(item.title); setGame(item.gameIndex)}}

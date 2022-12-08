@@ -15,7 +15,7 @@ import { getToken, removeTokens } from "../../extras/utils";
 import { googleConfig } from "../../constants/constant";
 
 export const loginWithToken = (token) => {
-  console.log("loginWithToken  ", token);
+  //console.log("loginWithToken  ", token);
   let finalToken = token;
 
   return function (dispatch) {
@@ -29,7 +29,7 @@ export const loginWithToken = (token) => {
 
 export const completeLogin = (token, isReload) => {
   return function (dispatch) {
-    console.log("completeLogin  ", token);
+   // console.log("completeLogin  ", token);
     dispatch(loginWithToken(token));
     !isReload &&
      Alert.alert("Success", "Login Successful! Welcome to Klutchh.");

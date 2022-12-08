@@ -36,7 +36,7 @@ const OtpScreen = ({route, navigation,}) => {
     const [activator, setActivator] = useState(0);
 
     useEffect(() => {
-        console.log("useEffect =>> >");
+        //console.log("useEffect =>> >");
       let interval;
       if (isResendEnable) {
         interval = setInterval(() => {

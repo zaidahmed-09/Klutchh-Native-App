@@ -13,9 +13,9 @@ const AlertModal = () => {
 
     const auth = useSelector((state) => state.auth);
 
-    console.log('====================================');
-    console.log("home auth alertModal => ", auth?.alertModal);
-    console.log('====================================');
+    // console.log('====================================');
+    // console.log("home auth alertModal => ", auth?.alertModal);
+    // console.log('====================================');
 
     var modalDetails = auth?.alertModal
 

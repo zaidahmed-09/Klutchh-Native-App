@@ -20,7 +20,7 @@ export const NEWS_URL = "https://news.api.klutchh.in/news";
 export const BottomNavigationTabs = {
   HomeStack: "HomeStack",
   Tournaments: "Tournaments",
-  MyGames: "MyMatches",
+  MyGames: "MyMatchesStack",
   ProfileTab: "ProfileTab",
 };
 
