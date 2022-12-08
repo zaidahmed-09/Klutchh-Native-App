@@ -94,7 +94,7 @@ const AppNavigation = () => {
     const checkAppVersion = async () => {
         const res = await axios.get(`${BASE_URL}/version`);
     
-        if (res.data.version !== "1.1.0") {
+        if (res.data.version !== "1.0") {
           setModalVisible(true);
         }
     };
