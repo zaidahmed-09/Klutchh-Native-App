@@ -9,7 +9,7 @@ import colors from '../../constants/colors';
 
 const DeviceWidth = Dimensions.get("window").width;
 
-const AppEligibleModal = () => {
+const AppEligibleModal = ({userLocation}) => {
 
     const auth = useSelector((state) => state.auth);
 
@@ -40,8 +40,8 @@ const AppEligibleModal = () => {
                     />
                 </View>
                 <View style={styles.textContainer} >
-                    <Text style={styles.title} >You are a resident of Assam</Text>
-                    <Text style={styles.subTitle} >Klutchh App is not able for residents of Andhra Pradesh, Assam, Odisha, Nagaland or Sikkim.</Text>
+                    <Text style={styles.title} >You are a resident of {userLocation}</Text>
+                    <Text style={styles.subTitle} >Klutchh App is not available for residents of Andhra Pradesh, Assam, Odisha, Nagaland or Sikkim.</Text>
                 </View>
             </View>
             </View>

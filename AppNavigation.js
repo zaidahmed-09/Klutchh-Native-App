@@ -1,6 +1,6 @@
 import React,{ useState, useEffect} from 'react'
 
-import { StyleSheet, Text, View, Platform, StatusBar, Linking, Modal, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Platform, PermissionsAndroid, StatusBar, Linking, Modal, TouchableOpacity } from "react-native";
 
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -27,6 +27,8 @@ import AppEligibleModal from './src/components/modal/AppEligibleModal';
 const AppNavigation = () => {
 
   const [isAppEligible, setIsAppEligible] = useState(false);
+
+  const [userLocation, setUserLocation] = useState('');
 
   const [currentLongitude, setCurrentLongitude] = useState('...');
   const [currentLatitude, setCurrentLatitude] = useState('...');
@@ -127,7 +129,10 @@ const AppNavigation = () => {
 
               var userState = resp?.address?.state
 
-              if(userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
+
+              setUserLocation(userState)
+
+              if(userState == 'Delhi' || userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
                 setIsAppEligible(true)
               }
           })
@@ -242,7 +247,7 @@ const AppNavigation = () => {
             </Modal>
               
 
-            {isAppEligible ? <AppEligibleModal /> : null}
+            {isAppEligible ? <AppEligibleModal userLocation={userLocation} /> : null}
         </NavigationContainer>
     )
 }
