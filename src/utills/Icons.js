@@ -167,6 +167,8 @@ export const icons = {
     team_player: require('../../assets/team_player.png'),
 
 
+    sadIcon: require('../../assets/sadIcon.png'),
+
     //banner
     valorant_banner: require('../../assets/banner/valorant_banner.png'),
     pubg_banner: require('../../assets/banner/pubg_banner.png'),
