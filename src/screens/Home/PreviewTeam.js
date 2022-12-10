@@ -46,7 +46,7 @@ function PreviewTeam({
   setStackMode,
   navigation
 }) {
-  const { SelectedPlayers, contestID, isGroupType, tour_title, matches, border_color, border_color2 } = route.params;
+  const { SelectedPlayers, contestID, isGroupType, tour_title, matches, border_color, border_color2,image1,image2,name1,name2,startTime } = route.params;
 
   
   const [mvplist, setMvplist] = useState(SelectedPlayers);
@@ -161,13 +161,13 @@ function PreviewTeam({
 
        <View style={{marginTop: 5}} >
        <HeroContestCard
-             image1={matches?.teams[0]?.opponent?.image_url}
-             image2={matches?.teams[1]?.opponent?.image_url}
-             name1 = {matches?.teams[0]?.opponent?.name}
-             name2 = {matches?.teams[1]?.opponent?.name}
+             image1={image1}
+             image2={image2}
+             name1 = {name1}
+             name2 = {name2}
              tour_title={tour_title}
              game_type={matches?.game_type}
-             startTime={CalcTime(matches?.starts_at)}
+             startTime={startTime}
              contest_status='upcoming'
              isGroupType={isGroupType}
              gameType={matches?.game_type}

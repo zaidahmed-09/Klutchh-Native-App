@@ -111,6 +111,7 @@ export const icons = {
 
     pubg_icon: require('../../assets/tabIcon/pubg.png'),
     freefire_icon: require('../../assets/tabIcon/freefire.png'),
+    csgo_icon: require('../../assets/gamesIcon/csgo.png'),
     valorant_icon: require('../../assets/tabIcon/valorant.png'),
     allItems_icon: require('../../assets/tabIcon/allItems.png'),
 

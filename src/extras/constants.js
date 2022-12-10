@@ -1,8 +1,8 @@
 // export const BASE_URL = "https://beta.api.klutchh.in/v1";
 
 // Replace below URL with your IP.
-// export const BASE_URL = "http://192.168.41.235:9000/v1";
-export const BASE_URL = "https://api.klutchh.in/v1";
+export const BASE_URL = "http://192.168.1.3:9000/v1";
+// export const BASE_URL = "https://api.klutchh.in/v1";
 
 //export const BASE_URL = "http://localhost:9000/v1";
 
@@ -30,4 +30,5 @@ export const GAMES = {
   VALORANT: "VALORANT",
   BGMI: "BGMI",
   FREEFIRE: "FREEFIRE",
+  CSGO : "CSGO",
 };

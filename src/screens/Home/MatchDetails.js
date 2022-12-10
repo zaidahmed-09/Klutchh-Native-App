@@ -167,6 +167,11 @@ const MatchDetails = ({ navigation, route,  }) => {
                                   border_color={match?.border_color}
                                   border_color2={match?.border_color2}
                                   match_name={match.name}
+                                  image1={matches?.teams[0]?.opponent?.image_url}
+                                  image2={matches?.teams[1]?.opponent?.image_url}
+                                  name1 = {matches?.teams[0]?.opponent?.name}
+                                  name2 = {matches?.teams[1]?.opponent?.name}
+                                  startTime={CalcTime(matches?.starts_at)}
                                 />
                               </TouchableOpacity>
                             ))}

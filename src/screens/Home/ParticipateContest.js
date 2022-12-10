@@ -54,7 +54,7 @@ const ParticipateContest = ({ navigation, route }) => {
   var [credit_count, setCredits] = useState(0);
   var [selectedPlayers, setSelection] = useState([]);
 
-  const { contest, isGroupType, tour_title, matches, border_color, border_color2 } = route.params;
+  const { contest, isGroupType, tour_title, matches, border_color, border_color2,image1,image2,name1,name2,startTime  } = route.params;
 
   const tournaments = useSelector((state) => state.tournaments);
 
@@ -157,13 +157,13 @@ const ParticipateContest = ({ navigation, route }) => {
           </View>
 
           <HeroContestCard
-             image1={matches?.teams[0]?.opponent?.image_url}
-             image2={matches?.teams[1]?.opponent?.image_url}
-             name1 = {matches?.teams[0]?.opponent?.name}
-             name2 = {matches?.teams[1]?.opponent?.name}
+             image1={image1}
+             image2={image2}
+             name1 = {name1}
+             name2 = {name2}
              tour_title={tour_title}
              game_type={matches?.game_type}
-             startTime={CalcTime(matches?.starts_at)}
+             startTime={startTime}
              contest_status='upcoming'
              isGroupType={isGroupType}
              hideImage={true}
@@ -219,7 +219,11 @@ const ParticipateContest = ({ navigation, route }) => {
                   border_color: border_color,
                   border_color2: border_color2,
                   matches: matches,
-                  
+                  image1:image1,
+                  image2:image2,
+                  name1:name1,
+                  name2:name2,
+                  startTime:startTime
                 })
               }
               }

@@ -13,7 +13,7 @@ import { GlobalButton, TextWhite } from "../../components/reusables";
 import StepProgress from "../../components/progressbar/StepProgress";
 
 function ContestDetails({ navigation, route,  }) {
-  const { contestID, isGroupType, isHistory, tour_title, matches, match_type, border_color, border_color2 } = route.params;
+  const { contestID, isGroupType, isHistory, tour_title, matches, match_type, border_color, border_color2, image1,image2,name1,name2,startTime } = route.params;
   // // console.log("PARAMSSS",route.params);
   const [contestDetails, setContestDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +36,7 @@ function ContestDetails({ navigation, route,  }) {
   useEffect(() => {
     fetchContest();
   }, []);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#211134" }}>
 
@@ -63,13 +64,13 @@ function ContestDetails({ navigation, route,  }) {
           <>
             <View style={{marginTop: Platform.OS === "ios" ? -30 : 0,}} > 
             <HeroContestCard
-             image1={matches?.teams[0]?.opponent?.image_url}
-             image2={matches?.teams[1]?.opponent?.image_url}
-             name1 = {matches?.teams[0]?.opponent?.name}
-             name2 = {matches?.teams[1]?.opponent?.name}
+             image1={image1}
+             image2={image2}
+             name1 = {name1}
+             name2 = {name2}
              tour_title={tour_title}
              game_type={matches?.game_type}
-             startTime={CalcTime(matches?.starts_at)}
+             startTime={startTime}
              contest_status='upcoming'
              isGroupType={isGroupType}
              gameType={matches?.game_type}
@@ -138,6 +139,11 @@ function ContestDetails({ navigation, route,  }) {
                   border_color: border_color,
                   border_color2: border_color2,
                   isGroupType,
+                  image1:image1,
+                  image2:image2,
+                  name1:name1,
+                  name2:name2,
+                  startTime:startTime
                 })
               }
                >

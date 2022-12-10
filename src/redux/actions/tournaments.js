@@ -14,6 +14,11 @@ export const getRosters = (team_id1,team_id2, game_type) => {
       // console.log("game_type ", game_type);
 
       // console.log('====================================');
+      console.log(
+        "team_id_1-------------------------------------------------------------"+
+        team_id1,
+        "team_id_2-------------------------------------------------------------"+
+        team_id2)
         axios.get(`${BASE_URL}/rosters/${team_id1}/${team_id2}?game_type=${game_type}`)
         .then((response) => {
           let data = response.data;

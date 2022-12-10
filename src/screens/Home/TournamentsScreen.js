@@ -56,6 +56,13 @@ const gamesArr = [
       icon: icons.freefire_icon,
       iconA: icons.freefire_iconA,
     },
+    {
+      id: 5,
+      title: 'CSGO',
+      gameIndex: 4,
+      icon: icons.csgo_icon,
+      iconA: icons.csgo_icon,
+    },
 ]
 
 
@@ -218,6 +225,8 @@ const TournamentsScreen = ({ navigation }) => {
                 return match
               } else if (game === 3 && match.type == GAMES.FREEFIRE) {
                 return true
+              } else if (game === 4 && match.type == GAMES.CSGO) {
+                return true
               }
             } else return false;
           }).length ? (
@@ -313,6 +322,16 @@ const TournamentsScreen = ({ navigation }) => {
                         index={index}
                         match={match}
                       /> */}
+                    </View>
+                  );
+                }  else if (game === 4 && match.type == GAMES.CSGO) {
+                  return (
+                    <View key={index}>
+                      <TournamentCard
+                        navigation={navigation}
+                        index={index}
+                        match={match}
+                      />
                     </View>
                   );
                 }

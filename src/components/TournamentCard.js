@@ -37,7 +37,7 @@ const TournamentCard = ({
         var team_id_1 = ''
         var team_id_2 = ''
 
-        if(match.game_type != 'VALORANT'){
+        if(match.game_type != 'VALORANT' && match.game_type != 'CSGO'){
             team_id_1 = match?.teams[0]?._id
             team_id_2  = match?.teams[1]?._id
         }else{

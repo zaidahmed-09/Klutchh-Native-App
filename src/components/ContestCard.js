@@ -8,7 +8,9 @@ import axios from 'axios';
 import {connect, useDispatch, useSelector} from 'react-redux';
 import { icons } from "../utills/Icons";
 
-const ContestCard = ({ navigation, contest, isGroupType, hideTitle, match_type ,match_name}) => {
+const ContestCard = ({ navigation, contest, isGroupType, hideTitle, match_type ,match_name,
+image1,image2,name1,name2,startTime
+}) => {
 
   console.log('====================================');
   console.log("contest match_type => ", contest?.min_win_percentage);
@@ -100,6 +102,11 @@ const ContestCard = ({ navigation, contest, isGroupType, hideTitle, match_type ,
                   contestID: contest._id,
                   match_type: match_type,
                   isGroupType,
+                  image1 : image1,
+                  image2 : image2,
+                  name1 : name1,
+                  name2 : name2,
+                  startTime : startTime
                 });
               }}
             >
