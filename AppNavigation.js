@@ -1,6 +1,6 @@
 import React,{useEffect, useRef} from 'react'
 
-import { StyleSheet, Text, View, Platform, StatusBar, Linking, Modal, TouchableOpacity, AppState } from "react-native";
+import { StyleSheet, Text, View, Platform, StatusBar, Linking, Modal, TouchableOpacity, AppState, PermissionsAndroid } from "react-native";
 
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -21,9 +21,20 @@ import SplashScreen from 'react-native-splash-screen';
 import RemotePushController from './src/utills/RemotePushController';
 // import FcmTokenScreen from './FcmTokenScreen';
 
+import Geolocation from '@react-native-community/geolocation';
+import AppEligibleModal from './src/components/modal/AppEligibleModal';
+
+
 const AppNavigation = () => {
 
     const appState = useRef(AppState.currentState);
+  const [isAppEligible, setIsAppEligible] = useState(false);
+
+  const [userLocation, setUserLocation] = useState('');
+
+  const [currentLongitude, setCurrentLongitude] = useState('...');
+  const [currentLatitude, setCurrentLatitude] = useState('...');
+  const [locationStatus, setLocationStatus] = useState('');
 
     const auth = useSelector((state) => state.auth);
 
@@ -81,6 +92,117 @@ const AppNavigation = () => {
         };
 
     }, [])
+
+
+    useEffect(() => {
+      const requestLocationPermission = async () => {
+        if (Platform.OS === 'ios') {
+          getOneTimeLocation();
+          subscribeLocationLocation();
+        } else {
+          try {
+            const granted = await PermissionsAndroid.request(
+              PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+              {
+                title: 'Location Access Required',
+                message: 'This App needs to Access your location',
+              },
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+              //To Check, If Permission is granted
+              getOneTimeLocation();
+              subscribeLocationLocation();
+            } else {
+              setLocationStatus('Permission Denied');
+            }
+          } catch (err) {
+            console.warn(err);
+          }
+        }
+      };
+      requestLocationPermission();
+      return () => {
+        Geolocation.clearWatch(watchID);
+      };
+    }, []);
+  
+    const getOneTimeLocation = () => {
+      setLocationStatus('Getting Location ...');
+      Geolocation.getCurrentPosition(
+        (position) => {
+          setLocationStatus('You are Here');
+          console.log("getOneTimeLocation =>> You are Here");
+          const currentLongitude = 
+            JSON.stringify(position.coords.longitude);
+          const currentLatitude = 
+            JSON.stringify(position.coords.latitude);
+          setCurrentLongitude(currentLongitude);
+          setCurrentLatitude(currentLatitude);
+        },
+        (error) => {
+          setLocationStatus(error.message);
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 30000,
+          maximumAge: 1000
+        },
+      );
+    };
+  
+    const subscribeLocationLocation = () => {
+      watchID = Geolocation.watchPosition(
+        (position) => {
+          setLocationStatus('You are Here');
+          console.log("subscribeLocationLocation =>> You are Here");
+          console.log(position); 
+
+          var longitude = position.coords.longitude
+          var latitude = position.coords.latitude
+
+          // console.log("longitude => ", longitude);     
+          // console.log("latitude => ", latitude);  
+          
+
+          //https://nominatim.openstreetmap.org/reverse?lat=16.515099&lon=80.632095&format=json
+          // fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
+          
+         // fetch(`https://nominatim.openstreetmap.org/reverse?lat=16.515099&lon=80.632095&format=json`)
+          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
+          .then(response => response.json())
+          .then(resp => {
+              console.log("resp => ", resp?.address?.state);
+
+              var userState = resp?.address?.state
+
+
+              setUserLocation(userState)
+
+              if(userState == 'Delhi' || userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
+                setIsAppEligible(true)
+              }
+          })
+          .catch(error => {
+            console.log("error => ", error);
+          })
+
+
+          const currentLongitude =
+            JSON.stringify(position.coords.longitude);
+          const currentLatitude = 
+            JSON.stringify(position.coords.latitude);
+          setCurrentLongitude(currentLongitude);
+          setCurrentLatitude(currentLatitude);
+        },
+        (error) => {
+          setLocationStatus(error.message);
+        },
+        {
+          enableHighAccuracy: false,
+          maximumAge: 1000
+        },
+      );
+    };
 
     React.useEffect(() => {
 
@@ -171,6 +293,9 @@ const AppNavigation = () => {
             </Modal>
 
             <RemotePushController />
+              
+
+            {isAppEligible ? <AppEligibleModal userLocation={userLocation} /> : null}
         </NavigationContainer>
     )
 }

@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CodePushDeploymentKey</key>
-	<string>8AWrX4e5-SO9_fkQyo6A5cqF0_6BqIHf6Ga6u</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -24,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CodePushDeploymentKey</key>
+	<string>8AWrX4e5-SO9_fkQyo6A5cqF0_6BqIHf6Ga6u</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -37,8 +37,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need to access to your location to show you relevant search results. With "Always" access we'll also send you some nice notifications.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need to access to your location to show you relevant search results. With "Always" access we'll also send you some nice notifications.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>We need to access to your location to show you relevant search results.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>fonts/MaterialCommunityIcons.ttf</string>
