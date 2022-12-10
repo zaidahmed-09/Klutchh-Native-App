@@ -1,6 +1,6 @@
-import React,{useEffect, useRef} from 'react'
+import React,{useState, useEffect, useRef} from 'react'
 
-import { StyleSheet, Text, View, Platform, StatusBar, Linking, Modal, TouchableOpacity, AppState, PermissionsAndroid } from "react-native";
+import { StyleSheet, Text, View, Platform, StatusBar, Linking, Modal, TouchableOpacity, AppState, PermissionsAndroid, BackHandler, Alert } from "react-native";
 
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -113,7 +113,14 @@ const AppNavigation = () => {
               getOneTimeLocation();
               subscribeLocationLocation();
             } else {
-              setLocationStatus('Permission Denied');
+              console.log("Permission Denied");
+              Alert.alert(
+                "Location Access Required",
+                "This App needs to Access your location",
+                [
+                  { text: "OK", onPress: () => {BackHandler.exitApp()}}
+                ]
+              );
             }
           } catch (err) {
             console.warn(err);
@@ -178,7 +185,7 @@ const AppNavigation = () => {
 
               setUserLocation(userState)
 
-              if(userState == 'Delhi' || userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
+              if(userState == 'Delhi' || userState == 'Karnataka' || userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
                 setIsAppEligible(true)
               }
           })

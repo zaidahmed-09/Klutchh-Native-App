@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setAlertModal } from '../../redux/actions/auth';
 
-import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Image, Modal,  } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions, Image, Modal, BackHandler,  } from 'react-native'
 
 import { icons } from "../../utills/Icons";
 import colors from '../../constants/colors';
@@ -24,10 +24,11 @@ const AppEligibleModal = ({userLocation}) => {
         transparent={true}
         visible={true}
         onRequestClose={() => {
-          //setModalVisible(!modalVisible);
+            BackHandler.exitApp()
+            //setModalVisible(!modalVisible);
         }}
         onBackdropPress={() => {
-          //setModalVisible(false);
+            //setModalVisible(false);
         }}
         style={{flex: 1,  alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%', }} 
       >

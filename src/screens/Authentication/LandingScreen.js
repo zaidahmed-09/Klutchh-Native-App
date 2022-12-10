@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, Dimensions, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, Platform } from 'react-native'
+import { View, Text, Image, Button, Dimensions, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, Platform, BackHandler } from 'react-native'
 import React, {useState} from 'react'
 import styled from 'styled-components';
 import colors from '../../constants/colors';
@@ -6,6 +6,7 @@ import { GlobalButton } from '../../components/reusables';
 
 import {icons} from '../../utills/Icons'
 import { LocalNotification } from '../../utills/LocalPushController';
+import { useFocusEffect } from '@react-navigation/native';
 
 
 const DeviceWidth = Dimensions.get("window").width;
@@ -21,6 +22,36 @@ export default function LandingScreen({navigation}) {
     const handleButton = () => {
         LocalNotification();
     }
+
+
+
+    useFocusEffect(
+        React.useCallback(() => {
+          const onBackPress = () => {
+            console.log("Exit App");
+            BackHandler.exitApp()
+            //navigation.navigate('ThirdPage');
+            // Return true to stop default back navigaton
+            // Return false to keep default back navigaton
+            return true;
+          };
+    
+          // Add Event Listener for hardwareBackPress
+          BackHandler.addEventListener(
+            'hardwareBackPress',
+            onBackPress
+          );
+    
+          return () => {
+            // Once the Screen gets blur Remove Event Listener
+            BackHandler.removeEventListener(
+              'hardwareBackPress',
+              onBackPress
+            );
+          };
+        }, []),
+      );
+    
 
 
   return (
