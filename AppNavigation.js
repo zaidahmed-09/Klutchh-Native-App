@@ -167,14 +167,6 @@ const AppNavigation = () => {
           var longitude = position.coords.longitude
           var latitude = position.coords.latitude
 
-          // console.log("longitude => ", longitude);     
-          // console.log("latitude => ", latitude);  
-          
-
-          //https://nominatim.openstreetmap.org/reverse?lat=16.515099&lon=80.632095&format=json
-          // fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
-          
-         // fetch(`https://nominatim.openstreetmap.org/reverse?lat=16.515099&lon=80.632095&format=json`)
           fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
           .then(response => response.json())
           .then(resp => {
@@ -185,7 +177,7 @@ const AppNavigation = () => {
 
               setUserLocation(userState)
 
-              if(userState == 'Delhi' || userState == 'Karnataka' || userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
+              if(userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
                 setIsAppEligible(true)
               }
           })
@@ -223,7 +215,7 @@ const AppNavigation = () => {
     const checkAppVersion = async () => {
         const res = await axios.get(`${BASE_URL}/version`);
     
-        if (res.data.version !== "1.0") {
+        if (res.data.version !== "1.1") {
           setModalVisible(true);
         }
     };
