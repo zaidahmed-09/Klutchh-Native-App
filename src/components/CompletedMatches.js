@@ -5,14 +5,14 @@ import { useSelector } from "react-redux";
 import { getToken, sortedMatchesByStartingTime } from "../extras/utils";
 import MyMatchesHelper from "./MyMatchesHelper";
 
-const CompletedMatches = ({matchData, matchStatus}) => {
+const CompletedMatches = ({ matchData, matchStatus }) => {
 
   const auth = useSelector((state) => state.auth);
 
 
   return (
     <View>
-      {matchData?.data?.length == 0 || !sortedMatchesByStartingTime(matchData?.data)?.find((e) => e?.status?.toLowerCase() === "completed") ? (
+      {matchData?.data?.length == 0 || !sortedMatchesByStartingTime(matchData?.data).reverse()?.find((e) => e?.status?.toLowerCase() === "completed") ? (
         <View
           style={{
             height: "80%",
