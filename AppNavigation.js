@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
-import { StyleSheet, Text, View, Platform, PermissionsAndroid, StatusBar, Linking, Modal, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Platform, PermissionsAndroid, StatusBar, Linking, Modal, TouchableOpacity, AppState } from "react-native";
 
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -44,6 +44,8 @@ const AppNavigation = () => {
   const [hasToken, setHasToken] = React.useState(false);
   const [modalVisible, setModalVisible] = React.useState(false);
 
+  const appState = useRef(AppState.currentState);
+
   useEffect(() => {
     checkLogin();
 
@@ -69,7 +71,9 @@ const AppNavigation = () => {
               Authorization: `Bearer ${auth?.access_token}`,
             },
           }
-        )
+        ).then(res => {
+          console.log(res.data)
+        })
       } else if (appState.current == "background") {
         axios.post(`${BASE_URL}/track/mixpanel`,
           {
@@ -92,6 +96,10 @@ const AppNavigation = () => {
 
   }, [])
 
+  console.log(
+    "access token---------------",
+    auth?.access_token
+  )
 
   useEffect(() => {
     const requestLocationPermission = async () => {
