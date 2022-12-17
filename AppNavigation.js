@@ -1,6 +1,6 @@
 import React,{ useState, useEffect} from 'react'
 
-import { StyleSheet, Text, View, Platform, PermissionsAndroid, StatusBar, Linking, Modal, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Platform, PermissionsAndroid, StatusBar, Linking, Modal, TouchableOpacity, Alert, BackHandler } from "react-native";
 
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -22,11 +22,13 @@ import SplashScreen from 'react-native-splash-screen';
 
 import Geolocation from '@react-native-community/geolocation';
 import AppEligibleModal from './src/components/modal/AppEligibleModal';
+import PermissionModal from './src/components/modal/PermissionModal';
 
 
 const AppNavigation = () => {
 
   const [isAppEligible, setIsAppEligible] = useState(false);
+  const [permissionModal, setPermissionModal] = useState(false);
 
   const [userLocation, setUserLocation] = useState('');
 
@@ -51,6 +53,17 @@ const AppNavigation = () => {
     useEffect(() => {
       const requestLocationPermission = async () => {
         if (Platform.OS === 'ios') {
+          Geolocation.requestAuthorization((position) => {
+              console.log("requestAuthorization =>> ", position);
+            },
+            (error) => {
+              console.log("requestAuthorization =>> ", error);
+
+              if(error.message == "User denied access to location services."){
+                setPermissionModal(true)
+              }
+            },
+          )
           getOneTimeLocation();
           subscribeLocationLocation();
         } else {
@@ -114,14 +127,6 @@ const AppNavigation = () => {
           var longitude = position.coords.longitude
           var latitude = position.coords.latitude
 
-          // console.log("longitude => ", longitude);     
-          // console.log("latitude => ", latitude);  
-          
-
-          //https://nominatim.openstreetmap.org/reverse?lat=16.515099&lon=80.632095&format=json
-          // fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
-          
-         // fetch(`https://nominatim.openstreetmap.org/reverse?lat=16.515099&lon=80.632095&format=json`)
           fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`)
           .then(response => response.json())
           .then(resp => {
@@ -132,7 +137,7 @@ const AppNavigation = () => {
 
               setUserLocation(userState)
 
-              if(userState == 'Delhi' || userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
+              if(userState == 'Andhra Pradesh' || userState ==  'Assam' || userState == 'Odisha' || userState == 'Nagaland' || userState == 'Sikkim'){
                 setIsAppEligible(true)
               }
           })
@@ -248,6 +253,10 @@ const AppNavigation = () => {
               
 
             {isAppEligible ? <AppEligibleModal userLocation={userLocation} /> : null}
+
+            {permissionModal ? <PermissionModal /> : null}
+
+            
         </NavigationContainer>
     )
 }
