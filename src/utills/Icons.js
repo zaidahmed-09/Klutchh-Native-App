@@ -28,13 +28,13 @@ export const icons = {
 
     down_arrow: require('../../assets/drop_down1.png'),
     right_arrow_white: require('../../assets/right_arrow_white.png'),
-    
+
     newsfeedIcon: require('../../assets/newsfeedIcon.png'),
 
     user_icon: require('../../assets/user_icon.png'),
 
     email_icon: require('../../assets/email_icon.png'),
-    
+
     swords: require('../../assets/swords.png'),
     winnings: require('../../assets/winnings.png'),
     prize: require('../../assets/prize.png'),
@@ -58,7 +58,7 @@ export const icons = {
     hero_pubg_banner: require('../../assets/hero_pubg_banner.png'),
 
     location: require('../../assets/location.png'),
-    
+
 
     wallet_balance: require('../../assets/drawer/wallet_balance.png'),
     fantasy_points: require('../../assets/drawer/fantasy_points.png'),
@@ -93,7 +93,7 @@ export const icons = {
     pubg_fantasy: require('../../assets/fantasy/pubg.png'),
     valorant_fantasy: require('../../assets/fantasy/valorant.png'),
     freefire_fantasy: require('../../assets/fantasy/freefire.png'),
-    
+
     pubg_fantasy_logo: require('../../assets/fantasy/pubg_logo.png'),
     freefire_fantasy_logo: require('../../assets/fantasy/freefire_logo.png'),
     valorant_logo: require('../../assets/fantasy/valorant_logo.png'),
@@ -107,17 +107,19 @@ export const icons = {
     pubg_iconA: require('../../assets/tabIcon/pubgActive.png'),
     freefire_iconA: require('../../assets/tabIcon/freefireActive.png'),
     valorant_iconA: require('../../assets/tabIcon/valorantActive.png'),
+    csgo_iconA: require('../../assets/tabIcon/csgoActive.png'),
     allItems_iconA: require('../../assets/tabIcon/allItemsActive.png'),
 
     pubg_icon: require('../../assets/tabIcon/pubg.png'),
     freefire_icon: require('../../assets/tabIcon/freefire.png'),
     valorant_icon: require('../../assets/tabIcon/valorant.png'),
+    csgo_icon: require('../../assets/tabIcon/csgo.png'),
     allItems_icon: require('../../assets/tabIcon/allItems.png'),
 
-    
+
 
     app_hero: require('../../assets/app_hero.png'),
-    
+
     swiperImg1: require('../../assets/swiper/image1.png'),
 
     live_banner_img: require('../../assets/live-banner-image.png'),
@@ -148,7 +150,7 @@ export const icons = {
     tutorial_video1: require('../../assets/tutorial/1.mp4'),
     right_arrow_white_tutorial: require('../../assets/tutorial/right_arrow_white.png'),
     left_arrow_white_tutorial: require('../../assets/tutorial/left_arrow_white.png'),
-    
+
     prize_1: require('../../assets/trophy/1st.png'),
     prize_2: require('../../assets/trophy/2nd.png'),
     prize_3: require('../../assets/trophy/3rd.png'),
@@ -178,13 +180,13 @@ export const icons = {
     valorant_header: require('../../assets/banner/valorant_header.png'),
     pubg_header: require('../../assets/banner/pubg_header.png'),
     freeFire_header: require('../../assets/banner/freeFire_header.png'),
-    
+
 
     purple_check: require('../../assets/purple_check.png'),
 
     // videos
 
-    
+
     heroGif: require('../../assets/videos/HeroGif.mp4'),
 
     gif_1: require('../../assets/videos/gif_1.gif'),

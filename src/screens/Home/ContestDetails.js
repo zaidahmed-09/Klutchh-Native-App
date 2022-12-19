@@ -12,27 +12,28 @@ import { ProgressBar } from "react-native-paper";
 import { GlobalButton, TextWhite } from "../../components/reusables";
 import StepProgress from "../../components/progressbar/StepProgress";
 
-function ContestDetails({ navigation, route,  }) {
-  const { contestID, isGroupType, isHistory, tour_title, matches, match_type, border_color, border_color2 } = route.params;
+function ContestDetails({ navigation, route, }) {
+  const { contestID, isGroupType, isHistory, tour_title, matches, match_type, border_color, border_color2,
+    image1, image2, name1, name2, startTime } = route.params;
   // // console.log("PARAMSSS",route.params);
   const [contestDetails, setContestDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  
+
   const fetchContest = async () => {
     setIsLoading(true);
     try {
       const res = await axios.get(`${BASE_URL}/contest/${contestID}?game_type=${!isGroupType}`);
-      
+
       setContestDetails(res.data.contest);
-      console.log("DATAAAA =>>> ",res.data.contest)
+      console.log("DATAAAA =>>> ", res.data.contest)
       setIsLoading(false);
     } catch (error) {
-     
+
       setContestDetails(null);
     }
   };
-  
+
   useEffect(() => {
     fetchContest();
   }, []);
@@ -55,32 +56,32 @@ function ContestDetails({ navigation, route,  }) {
           style={{
             width: "95%",
             height: 100,
-            
+
           }}
         />
       ) : (
         contestDetails && (
           <>
-            <View style={{marginTop: Platform.OS === "ios" ? -30 : 0,}} > 
-            <HeroContestCard
-             image1={matches?.teams[0]?.opponent?.image_url}
-             image2={matches?.teams[1]?.opponent?.image_url}
-             name1 = {matches?.teams[0]?.opponent?.name}
-             name2 = {matches?.teams[1]?.opponent?.name}
-             tour_title={tour_title}
-             game_type={matches?.game_type}
-             startTime={CalcTime(matches?.starts_at)}
-             contest_status='upcoming'
-             isGroupType={isGroupType}
-             gameType={matches?.game_type}
-             match_details={matches}
-             match_status={'upcoming'}
-             isStepProgress={true}
-             border_color={border_color}
-             border_color2={border_color2}
-             />
+            <View style={{ marginTop: Platform.OS === "ios" ? -30 : 0, }} >
+              <HeroContestCard
+                image1={image1}
+                image2={image2}
+                name1={name1}
+                name2={name2}
+                tour_title={tour_title}
+                game_type={matches?.game_type}
+                startTime={startTime}
+                contest_status='upcoming'
+                isGroupType={isGroupType}
+                gameType={matches?.game_type}
+                match_details={matches}
+                match_status={'upcoming'}
+                isStepProgress={true}
+                border_color={border_color}
+                border_color2={border_color2}
+              />
 
-          <StepProgress currentIdx={1} />
+              <StepProgress currentIdx={1} />
 
             </View>
             <ScrollView>
@@ -93,57 +94,62 @@ function ContestDetails({ navigation, route,  }) {
                   backgroundColor: "#211134",
                 }}
               >
-            
 
-                <View style={{backgroundColor: '#FFFFFF20', borderWidth: 1, borderColor: '#ffffff20', padding: 15, borderRadius: 8, height: 80, marginBottom: 20}} >
-                  <View style={{flexDirection: 'row', justifyContent: 'space-between'}} >
-                    <Text style={{color: "#fff", fontSize: 14 }} >Entry : ₹ {contestDetails?.entry_fee}</Text>
-                    <Text style={{color: "#fff", fontSize: 14 }}>Practice Contest</Text>
+
+                <View style={{ backgroundColor: '#FFFFFF20', borderWidth: 1, borderColor: '#ffffff20', padding: 15, borderRadius: 8, height: 80, marginBottom: 20 }} >
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+                    <Text style={{ color: "#fff", fontSize: 14 }} >Entry : ₹ {contestDetails?.entry_fee}</Text>
+                    <Text style={{ color: "#fff", fontSize: 14 }}>Practice Contest</Text>
                   </View>
 
-                  <View style={{paddingTop: 10}} >
+                  <View style={{ paddingTop: 10 }} >
                     <ProgressBar
                       progress={Number(contestDetails?.current_entries) / Number(contestDetails?.max_entries)}
                       width="100%"
                       color="#FF326A"
-                      style={{backgroundColor: '#28282870'}}
+                      style={{ backgroundColor: '#28282870' }}
                     />
                   </View>
 
-                  <View style={{flexDirection: 'row', marginTop: 4, justifyContent: 'space-between'}} >
-                      <View style={{ }}>
-                        <Text style={{ color: "#FF326A",fontSize: 12 }}>
-                        
-                          {Number(contestDetails?.max_entries) - Number(contestDetails?.current_entries)} spots
-                          
-                        </Text>
-                      </View>
-                      <Text style={{color: "#fff", fontSize: 12 }}>{contestDetails?.max_entries} spots</Text>
+                  <View style={{ flexDirection: 'row', marginTop: 4, justifyContent: 'space-between' }} >
+                    <View style={{}}>
+                      <Text style={{ color: "#FF326A", fontSize: 12 }}>
+
+                        {Number(contestDetails?.max_entries) - Number(contestDetails?.current_entries)} spots
+
+                      </Text>
+                    </View>
+                    <Text style={{ color: "#fff", fontSize: 12 }}>{contestDetails?.max_entries} spots</Text>
                   </View>
                 </View>
 
                 <PrizeResultCard prizePool={contestDetails?.prize_pool_list} details={contestDetails} match_type={match_type} />
 
-            
+
               </View>
             </ScrollView>
-              <View style={{marginBottom: 0, marginHorizontal: 15}}>
-               <GlobalButton
-               onPress={() =>
-                navigation.navigate("ParticipateContest", {
-                  // teams: team,
-                  contest: contestDetails,
-                  matches: matches,
-                  tour_title: tour_title,
-                  border_color: border_color,
-                  border_color2: border_color2,
-                  isGroupType,
-                })
-              }
-               >
-                      <TextWhite>CREATE TEAM</TextWhite>
-                    </GlobalButton>
-              </View>
+            <View style={{ marginBottom: 0, marginHorizontal: 15 }}>
+              <GlobalButton
+                onPress={() =>
+                  navigation.navigate("ParticipateContest", {
+                    // teams: team,
+                    contest: contestDetails,
+                    matches: matches,
+                    tour_title: tour_title,
+                    border_color: border_color,
+                    border_color2: border_color2,
+                    isGroupType,
+                    image1: image1,
+                    image2: image2,
+                    name1: name1,
+                    name2: name2,
+                    startTime: startTime
+                  })
+                }
+              >
+                <TextWhite>CREATE TEAM</TextWhite>
+              </GlobalButton>
+            </View>
           </>
         )
       )}
