@@ -107,12 +107,12 @@ export const icons = {
     pubg_iconA: require('../../assets/tabIcon/pubgActive.png'),
     freefire_iconA: require('../../assets/tabIcon/freefireActive.png'),
     valorant_iconA: require('../../assets/tabIcon/valorantActive.png'),
-    csgo_iconA: require('../../assets/fantasy/csgoActive.png'),
+    csgo_iconA: require('../../assets/tabIcon/csgoActive.png'),
     allItems_iconA: require('../../assets/tabIcon/allItemsActive.png'),
 
     pubg_icon: require('../../assets/tabIcon/pubg.png'),
     freefire_icon: require('../../assets/tabIcon/freefire.png'),
-    csgo_icon: require('../../assets/gamesIcon/csgo.png'),
+    csgo_icon: require('../../assets/tabIcon/csgo.png'),
     valorant_icon: require('../../assets/tabIcon/valorant.png'),
     allItems_icon: require('../../assets/tabIcon/allItems.png'),
 
