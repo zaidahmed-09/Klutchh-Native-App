@@ -35,7 +35,7 @@ const DeviceWidth = Dimensions.get("window").width;
 const { width } = Dimensions.get("window");
 
 const parentWidth = width;
-const childrenWidth = width*0.9;
+const childrenWidth = width * 0.9;
 const childrenHeight = 72;
 
 function PreviewTeam({
@@ -46,11 +46,12 @@ function PreviewTeam({
   setStackMode,
   navigation
 }) {
-  const { SelectedPlayers, contestID, isGroupType, tour_title, matches, border_color, border_color2 } = route.params;
+  const { SelectedPlayers, contestID, isGroupType, tour_title, matches, border_color, border_color2,
+    image1, image2, name1, name2, startTime } = route.params;
 
-  
+
   const [mvplist, setMvplist] = useState(SelectedPlayers);
- 
+
   const checkAuth = () => {
     if (auth.user) enterContest();
     else {
@@ -61,29 +62,29 @@ function PreviewTeam({
 
   const enterContest = () => {
 
-  
+
     let selected_team = [];
 
     mvplist.map(function (e) {
       return selected_team.push(e);
     });
 
-   
+
 
     var mvps = []
 
-    if(isGroupType){
+    if (isGroupType) {
       mvps = [mvplist[0]._id, mvplist[1]._id, mvplist[2]._id];
-    }else{
+    } else {
       mvps = [mvplist[0].pandascore_id, mvplist[1].pandascore_id, mvplist[2].pandascore_id];
     }
 
     // setActiveRoute(null)
 
     var data = {
-        contest_id: contestID._id,
-        selected_team: selected_team,
-        mvp: mvps,
+      contest_id: contestID._id,
+      selected_team: selected_team,
+      mvp: mvps,
     }
 
     axios
@@ -105,7 +106,7 @@ function PreviewTeam({
       .then((response) => {
 
         console.log('====================================');
-       // console.log("response =>>>> ", response);
+        // console.log("response =>>>> ", response);
         console.log('====================================');
         Alert.alert(response.data.status, response.data.msg);
         navigation?.popToTop();
@@ -156,30 +157,30 @@ function PreviewTeam({
       style={{ flex: 1, backgroundColor: colors.PRIMARY_COLOR, color: "white" }}
     >
       <SafeAreaView
-        style={{ flex: 1, backgroundColor: colors.PRIMARY_COLOR, alignItems: 'center'}}
+        style={{ flex: 1, backgroundColor: colors.PRIMARY_COLOR, alignItems: 'center' }}
       >
 
-       <View style={{marginTop: 5}} >
-       <HeroContestCard
-             image1={matches?.teams[0]?.opponent?.image_url}
-             image2={matches?.teams[1]?.opponent?.image_url}
-             name1 = {matches?.teams[0]?.opponent?.name}
-             name2 = {matches?.teams[1]?.opponent?.name}
-             tour_title={tour_title}
-             game_type={matches?.game_type}
-             startTime={CalcTime(matches?.starts_at)}
-             contest_status='upcoming'
-             isGroupType={isGroupType}
-             gameType={matches?.game_type}
-             match_details={matches}
-             match_status={'upcoming'}
-             isStepProgress={true}
-             border_color={border_color}
-             border_color2={border_color2}
-             />
+        <View style={{ marginTop: 5 }} >
+          <HeroContestCard
+            image1={image1}
+            image2={image2}
+            name1={name1}
+            name2={name2}
+            tour_title={tour_title}
+            game_type={matches?.game_type}
+            startTime={startTime}
+            contest_status='upcoming'
+            isGroupType={isGroupType}
+            gameType={matches?.game_type}
+            match_details={matches}
+            match_status={'upcoming'}
+            isStepProgress={true}
+            border_color={border_color}
+            border_color2={border_color2}
+          />
 
-            <StepProgress currentIdx={3} />
-       </View>
+          <StepProgress currentIdx={3} />
+        </View>
 
 
         <Text
@@ -243,22 +244,22 @@ function PreviewTeam({
             delayLongPress={100}
           />
 
-          <View style={{flexDirection: 'row', flexWrap: 'wrap', width: DeviceWidth-20, marginBottom: 15, marginTop: 10, paddingHorizontal: 20, alignItems: 'center', justifyContent: 'center' }} >
-          
-            <Text  style={{fontSize: 13, color: 'white', marginTop: 4, fontFamily: 'Inter-Medium'}} >You’ve selected </Text>
-            <Text  style={{fontSize: 13, color: '#FF326A', marginTop: 4, fontFamily: 'Inter-SemiBold'}} >{mvplist[0].name} (2x), </Text>
-            <Text  style={{fontSize: 13, color: '#FF326A', marginTop: 4, fontFamily: 'Inter-SemiBold'}} >{mvplist[1].name} (1.75x)</Text>
-            <Text  style={{fontSize: 13, color: 'white', marginTop: 4, fontFamily: 'Inter-Medium'}} > and </Text>
-            <Text  style={{fontSize: 13, color: '#FF326A', marginTop: 4, fontFamily: 'Inter-SemiBold'}} >{mvplist[2].name} (1.5x) </Text>
-            <Text  style={{fontSize: 13, color: 'white', marginTop: 4, fontFamily: 'Inter-Medium'}} >as your MVPs</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', width: DeviceWidth - 20, marginBottom: 15, marginTop: 10, paddingHorizontal: 20, alignItems: 'center', justifyContent: 'center' }} >
+
+            <Text style={{ fontSize: 13, color: 'white', marginTop: 4, fontFamily: 'Inter-Medium' }} >You’ve selected </Text>
+            <Text style={{ fontSize: 13, color: '#FF326A', marginTop: 4, fontFamily: 'Inter-SemiBold' }} >{mvplist[0].name} (2x), </Text>
+            <Text style={{ fontSize: 13, color: '#FF326A', marginTop: 4, fontFamily: 'Inter-SemiBold' }} >{mvplist[1].name} (1.75x)</Text>
+            <Text style={{ fontSize: 13, color: 'white', marginTop: 4, fontFamily: 'Inter-Medium' }} > and </Text>
+            <Text style={{ fontSize: 13, color: '#FF326A', marginTop: 4, fontFamily: 'Inter-SemiBold' }} >{mvplist[2].name} (1.5x) </Text>
+            <Text style={{ fontSize: 13, color: 'white', marginTop: 4, fontFamily: 'Inter-Medium' }} >as your MVPs</Text>
           </View>
-          <View style={{ textAlign: "center",marginBottom: -10, paddingHorizontal: 10 }}>
+          <View style={{ textAlign: "center", marginBottom: -10, paddingHorizontal: 10 }}>
             {mvplist && (
               <GlobalButton
-              onPress={() => checkAuth()}
-               >
-                  <TextWhite>ENTER CONTEST</TextWhite>
-                </GlobalButton>
+                onPress={() => checkAuth()}
+              >
+                <TextWhite>ENTER CONTEST</TextWhite>
+              </GlobalButton>
             )}
           </View>
         </View>

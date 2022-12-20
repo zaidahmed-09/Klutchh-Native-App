@@ -12,7 +12,7 @@ import { GlobalButton, GlobalButtonInactive, TextWhite } from "../../components/
 import { icons } from "../../utills/Icons";
 import { CalcTime } from "../../components/CalcTime";
 import StepProgress from "../../components/progressbar/StepProgress";
-import {BASE_URL} from '../../extras/constants';
+import { BASE_URL } from '../../extras/constants';
 import axios from 'axios';
 
 const DeviceWidth = Dimensions.get("window").width;
@@ -54,7 +54,8 @@ const ParticipateContest = ({ navigation, route }) => {
   var [credit_count, setCredits] = useState(0);
   var [selectedPlayers, setSelection] = useState([]);
 
-  const { contest, isGroupType, tour_title, matches, border_color, border_color2 } = route.params;
+  const { contest, isGroupType, tour_title, matches, border_color, border_color2,
+    image1, image2, name1, name2, startTime } = route.params;
 
   const tournaments = useSelector((state) => state.tournaments);
 
@@ -89,101 +90,101 @@ const ParticipateContest = ({ navigation, route }) => {
       },
     );
   }
-  
-  
+
+
   return (
-  // <ImageBackground 
-  //   resizeMode="cover"
-  //   source={bgNew}
-  //   style={{
-  //       flex:1,
-  //   }}>
-  <View style={{flex: 1, width: DeviceWidth, backgroundColor: colors.PRIMARY_COLOR}} >
+    // <ImageBackground 
+    //   resizeMode="cover"
+    //   source={bgNew}
+    //   style={{
+    //       flex:1,
+    //   }}>
+    <View style={{ flex: 1, width: DeviceWidth, backgroundColor: colors.PRIMARY_COLOR }} >
       <View
         style={{
           flex: 1,
           margin: 0,
           // marginLeft: 10,
           // marginRight: 10,
-          
+
         }}
       >
-        <ScrollView contentContainerStyle={{alignItems: 'center'}} >
+        <ScrollView contentContainerStyle={{ alignItems: 'center' }} >
           <View style={{
-            display:"flex",
+            display: "flex",
             marginTop: 60,
-            alignItems:"center",
+            alignItems: "center",
           }}>
-            
-          {!isGroupType && <View style={{marginBottom: 10, flexDirection: 'row', alignItems: 'center', }} >
+
+            {!isGroupType && <View style={{ marginBottom: 10, flexDirection: 'row', alignItems: 'center', }} >
               {emptyTeam.map((item, index) => (
-                <View style={{height: 35, width: 35, margin: 6, backgroundColor: selectedPlayers[index] ? colors.PRIMARY_COLOR : colors.NEW_THEME_RED, borderColor: colors.NEW_THEME_RED, borderWidth: 1,  borderRadius: 4, alignItems: 'center', justifyContent: 'center'}} >
-                   {selectedPlayers[index] 
-                   ? <Image source={
+                <View style={{ height: 35, width: 35, margin: 6, backgroundColor: selectedPlayers[index] ? colors.PRIMARY_COLOR : colors.NEW_THEME_RED, borderColor: colors.NEW_THEME_RED, borderWidth: 1, borderRadius: 4, alignItems: 'center', justifyContent: 'center' }} >
+                  {selectedPlayers[index]
+                    ? <Image source={
                       selectedPlayers[index]?.image_url ? {
                         uri: selectedPlayers[index]?.image_url
                       }
-                      :
-                      icons.user_dummy_img
-                    } 
-                      style={{height: 26, width: 26, resizeMode: 'contain'}} 
+                        :
+                        icons.user_dummy_img
+                    }
+                      style={{ height: 26, width: 26, resizeMode: 'contain' }}
                     />
-                  :
-                  <Image 
-                    source={icons.question_mark}
-                    style={{height: 18, width: 18, resizeMode: 'contain'}} 
-                  />
+                    :
+                    <Image
+                      source={icons.question_mark}
+                      style={{ height: 18, width: 18, resizeMode: 'contain' }}
+                    />
                   }
                 </View>
               ))}
-              
-          </View>}
 
-          <Text style={{ color: "#ffffff",fontSize:13, fontFamily: 'Inter-Medium'}} >Choose {!isGroupType ? <Text>5 players </Text> : <Text>4 squads </Text>}to join your roster</Text>
+            </View>}
+
+            <Text style={{ color: "#ffffff", fontSize: 13, fontFamily: 'Inter-Medium' }} >Choose {!isGroupType ? <Text>5 players </Text> : <Text>4 squads </Text>}to join your roster</Text>
           </View>
-    
 
-          <View style={{alignItems: 'center', padding: 10}} >
+
+          <View style={{ alignItems: 'center', padding: 10 }} >
             <View>
-                <TotalCreditsBtn >
-                    <Text style={{
-                        fontSize: 12,
-                        fontFamily: 'Inter-Medium',
-                        fontWeight: 'bold',
-                        color: "white",
-                    }}>Total Credits : {credit_count}/15</Text>
-                </TotalCreditsBtn>
+              <TotalCreditsBtn >
+                <Text style={{
+                  fontSize: 12,
+                  fontFamily: 'Inter-Medium',
+                  fontWeight: 'bold',
+                  color: "white",
+                }}>Total Credits : {credit_count}/15</Text>
+              </TotalCreditsBtn>
             </View>
           </View>
 
           <HeroContestCard
-             image1={matches?.teams[0]?.opponent?.image_url}
-             image2={matches?.teams[1]?.opponent?.image_url}
-             name1 = {matches?.teams[0]?.opponent?.name}
-             name2 = {matches?.teams[1]?.opponent?.name}
-             tour_title={tour_title}
-             game_type={matches?.game_type}
-             startTime={CalcTime(matches?.starts_at)}
-             contest_status='upcoming'
-             isGroupType={isGroupType}
-             hideImage={true}
-             gameType={matches?.game_type}
-             match_details={matches}
-             match_status={'upcoming'}
-             isStepProgress={true}
-             border_color={border_color}
-             border_color2={border_color2}
-             />
-             <StepProgress currentIdx={2} />
+            image1={image1}
+            image2={image2}
+            name1={name1}
+            name2={name2}
+            tour_title={tour_title}
+            game_type={matches?.game_type}
+            startTime={startTime}
+            contest_status='upcoming'
+            isGroupType={isGroupType}
+            hideImage={true}
+            gameType={matches?.game_type}
+            match_details={matches}
+            match_status={'upcoming'}
+            isStepProgress={true}
+            border_color={border_color}
+            border_color2={border_color2}
+          />
+          <StepProgress currentIdx={2} />
 
           {isGroupType && (
-              <View style={{flexDirection: 'row', justifyContent: 'space-evenly', width: DeviceWidth-40 }} >
-                <Text style={{color: 'white', width: '30%', marginRight: 50, textAlign: 'right',}} >Squads</Text>
-                <Text style={{color: 'white', marginLeft: 10,}} >K/D</Text>
-                <Text style={{color: 'white'}} >Credits</Text>
-                <Text style={{color: 'white'}} > </Text>
-              </View>
-            )}
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: DeviceWidth - 40 }} >
+              <Text style={{ color: 'white', width: '30%', marginRight: 50, textAlign: 'right', }} >Squads</Text>
+              <Text style={{ color: 'white', marginLeft: 10, }} >K/D</Text>
+              <Text style={{ color: 'white' }} >Credits</Text>
+              <Text style={{ color: 'white' }} > </Text>
+            </View>
+          )}
 
           <TeamSelect
             data={contest?.match_id?.teams}
@@ -209,7 +210,7 @@ const ParticipateContest = ({ navigation, route }) => {
             }}
           >
             <GlobalButton
-              onPress={() =>{
+              onPress={() => {
                 MixPanelCall();
                 navigation.navigate("PreviewTeam", {
                   SelectedPlayers: selectedPlayers,
@@ -219,15 +220,20 @@ const ParticipateContest = ({ navigation, route }) => {
                   border_color: border_color,
                   border_color2: border_color2,
                   matches: matches,
-                  
+                  image1: image1,
+                  image2: image2,
+                  name1: name1,
+                  name2: name2,
+                  startTime: startTime
+
                 })
               }
               }
-               >
-                  <TextWhite>PREVIEW TEAM</TextWhite>
-                </GlobalButton>
+            >
+              <TextWhite>PREVIEW TEAM</TextWhite>
+            </GlobalButton>
           </View>
-        ): (
+        ) : (
           <View
             style={{
               marginLeft: 15,
@@ -235,15 +241,15 @@ const ParticipateContest = ({ navigation, route }) => {
               marginBottom: 30,
             }}
           >
-          <GlobalButtonInactive
-             
-               >
-                  <TextWhite>PREVIEW TEAM</TextWhite>
-                </GlobalButtonInactive>
+            <GlobalButtonInactive
+
+            >
+              <TextWhite>PREVIEW TEAM</TextWhite>
+            </GlobalButtonInactive>
           </View>
         )}
       </View>
-      </View>
+    </View>
     // </ImageBackground>
   );
 };
