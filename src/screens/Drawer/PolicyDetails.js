@@ -20,6 +20,9 @@ const PolicyDetails = () => {
 	const [press5, setPress5] = useState("-180deg");
 	const [press6, setPress6] = useState("-180deg");
 	const [press7, setPress7] = useState("-180deg");
+	const [press8, setPress8] = useState("-180deg");
+	const [press9, setPress9] = useState("-180deg");
+	const [press10, setPress10] = useState("-180deg");
 
     return (
         <SafeAreaView  style={{flex: 1, backgroundColor: colors.PRIMARY_COLOR}} >
@@ -112,7 +115,7 @@ const PolicyDetails = () => {
                         borderColor: "#ffffff30",
                         }}
                         onToggle={() =>
-                        setPress2(press2 == "-180deg" ? "-90deg" : "-180deg")
+                        setPress8(press8 == "-180deg" ? "-90deg" : "-180deg")
                         }
                     >
                         <CollapseHeader>
@@ -142,7 +145,7 @@ const PolicyDetails = () => {
                                 marginRight: 10,
                                 height: 34,
                                 width: 34,
-                                transform: [{ rotate: press2 }],
+                                transform: [{ rotate: press8 }],
                             }}
                             />
                         </View>
@@ -175,7 +178,7 @@ const PolicyDetails = () => {
                         borderColor: "#ffffff30",
                         }}
                         onToggle={() =>
-                        setPress2(press2 == "-180deg" ? "-90deg" : "-180deg")
+                        setPress9(press9 == "-180deg" ? "-90deg" : "-180deg")
                         }
                     >
                         <CollapseHeader>
@@ -205,7 +208,7 @@ const PolicyDetails = () => {
                                 marginRight: 10,
                                 height: 34,
                                 width: 34,
-                                transform: [{ rotate: press2 }],
+                                transform: [{ rotate: press9 }],
                             }}
                             />
                         </View>
@@ -242,7 +245,7 @@ const PolicyDetails = () => {
                         borderColor: "#ffffff30",
                         }}
                         onToggle={() =>
-                        setPress2(press2 == "-180deg" ? "-90deg" : "-180deg")
+                        setPress10(press10 == "-180deg" ? "-90deg" : "-180deg")
                         }
                     >
                         <CollapseHeader>
@@ -272,7 +275,7 @@ const PolicyDetails = () => {
                                 marginRight: 10,
                                 height: 34,
                                 width: 34,
-                                transform: [{ rotate: press2 }],
+                                transform: [{ rotate: press10 }],
                             }}
                             />
                         </View>

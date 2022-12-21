@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import React,{ useState} from "react";
 import TransactionCell from "./TransactionCell";
 
 const Transactions=({ amount, Ttype, Tdate,Tdesc })=>{

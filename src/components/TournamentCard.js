@@ -80,6 +80,7 @@ const TournamentCard = ({
               k={team_index}
               isLive={false}
               isGroupType={isGroupType(team?.game_type)}
+              gameType={team?.game_type}
             />
           </TouchableOpacity>)
       })}

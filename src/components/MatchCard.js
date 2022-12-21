@@ -4,6 +4,7 @@ import { CalcTime } from "./CalcTime";
 import Live from "./Live";
 import klutchhLogo from "../../assets/logo_mark.png";
 import moneyBag from "../../assets/money.png";
+import csgoMatchCard from "../../assets/csgo.png";
 import valorant from "../../assets/valorant.png";
 import pubgMatchCard from "../../assets/pubgMatchCard.png";
 import pubgMatchCard2 from "../../assets/pubgMatchCard2.png";
@@ -12,7 +13,7 @@ import pubgIconMatchCard from "../../assets/pubgIconMatchCard.png";
 import { icons } from "../utills/Icons";
 // import bellIcon from "../../assets/bell.png";
 
-const MatchCard = ({ team, isLive, isGroupType, hideBorder }) => {
+const MatchCard = ({ team, isLive, isGroupType, hideBorder ,gameType}) => {
   const imagesArray = [pubgMatchCard,pubgMatchCard2,pubgMatchCard,pubgMatchCard2]
   //console.log("upcoming MATCH CARD =>>>  ",team)
   const LeagueName = team?.league_name ? team?.league_name : "";
@@ -341,7 +342,7 @@ const MatchCard = ({ team, isLive, isGroupType, hideBorder }) => {
               }}>10 Contests</Text>
             </View>
            
-            <Image source={valorant}
+            <Image source={gameType == "VALORANT" ? valorant : csgoMatchCard}
             style={{
               width:34,
               height:34,
