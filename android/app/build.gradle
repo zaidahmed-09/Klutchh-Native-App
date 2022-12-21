@@ -228,12 +228,12 @@ android {
             keyPassword 'android'
         }
 
-        release {
-            storeFile file('my-release-key.keystore')
-            storePassword 'keypassword'
-            keyAlias 'my-key-alias'
-            keyPassword 'keypassword'
-        }
+         release {
+      storeFile file('your_key_name.keystore')
+      storePassword 'klutchh'
+      keyAlias 'your_key_alias'
+      keyPassword 'klutchh'
+    }
 
     }
     buildTypes {

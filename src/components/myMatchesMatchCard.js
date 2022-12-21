@@ -4,6 +4,7 @@ import klutchhLogo from "../../assets/logo_mark.png";
 import Live from "./Live";
 import React, {useState} from 'react';
 import valorant from "../../assets/valorant.png";
+import csgoMatchCard from "../../assets/csgo.png"
 import pubgMatchCard from "../../assets/pubgMatchCard.png";
 import pubgMatchCard2 from "../../assets/pubgMatchCard2.png";
 import pubgIconMatchCard from "../../assets/pubgIconMatchCard.png";
@@ -93,6 +94,7 @@ const MyMatchesMatchCard = ({team, isLive, status, hideBorder, isDisabledTime, t
   }
 
  }
+
 
   return (
     <View
@@ -294,7 +296,7 @@ const MyMatchesMatchCard = ({team, isLive, status, hideBorder, isDisabledTime, t
               color:"#EBEBF560"
             }}>{tour_title}</Text>
 
-            <Image source={valorant} 
+            <Image source={isGroupGame == "CSGO"? csgoMatchCard :valorant} 
             style={{ width: 30, height: 30 }}
             />
         </View>
