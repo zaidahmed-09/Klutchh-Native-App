@@ -165,7 +165,7 @@ const TournamentsScreen = ({ navigation }) => {
                       onPress={() => { setActiveTab(item.title); setGame(item.gameIndex) }}
                       style={[{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 8, paddingBottom: 5, }]} >
                       <View style={{ width: activeTab != item.title ? 40 : null, alignItems: 'center', justifyContent: 'center' }} >
-                        <Image source={activeTab == item.title ? item.iconA : item.icon} style={{ height: 28, width: 28, }} />
+                        <Image source={activeTab == item.title ? item.iconA : item.icon} style={{ height: 24, width: 24, }} />
                       </View>
                       {activeTab == item.title ? <Text style={{ color: '#FF326A', fontSize: 12, marginLeft: 6 }} >{item.title} </Text> : null}
                     </TouchableOpacity>
