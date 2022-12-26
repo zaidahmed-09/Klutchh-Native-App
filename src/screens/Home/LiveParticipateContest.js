@@ -59,14 +59,15 @@ const LiveParticipateContest = (props) => {
         var match = props.route.params.match
 
 
+        console.log("matches zero testin",match.teams[0].opponent.id)
         var team_id_1 = ''
         var team_id_2 = ''
 
         if(match.game_type != 'VALORANT'){
             // team_id_1 = match?.teams[0]
             // team_id_2  = match?.teams[1]
-            team_id_1 = match?.teams[0]?._id
-            team_id_2  = match?.teams[1]?._id
+            team_id_1 = match?.teams[0]?.opponent.id
+            team_id_2  = match?.teams[1]?.opponent.id
         }else{
             // team_id_1 = match?.teams[0]?.opponent?.id
             // team_id_2  = match?.teams[1]?.opponent?.id
